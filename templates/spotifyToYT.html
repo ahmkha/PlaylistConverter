@@ -1,0 +1,24 @@
+{% extends 'baseTemplate.html' %}
+
+{% block head %}
+<title>Spotify → Youtube Converter</title>
+{% endblock %}
+
+{% block body %}
+<table>
+  <tr>
+    <th>Login to Spotify</th>
+    <th>Enter Playlist URL</th>
+  </tr>
+
+  <tr>
+    <td><a href="/SpotifyLogin">Login</a></td>
+    <td>
+      <form>
+        <input>
+        <button>Submit</button>
+      </form>
+    </td>
+  </tr>
+</table>
+{% endblock %}
