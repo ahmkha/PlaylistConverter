@@ -1,0 +1,29 @@
+{% extends 'baseTemplate.html' %}
+
+{% block head %}
+<title>Spotify → Youtube Converter</title>
+{% endblock %}
+
+{% block body %}
+<div>
+    Select playlist(s) to convert:
+</div>
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th>Playlists</th>
+  </tr>
+  <form>
+    {% for playlistItem in playlists %}
+    <tr>
+        <td><input type="radio" /></td>
+        <td>
+            <img src = "{{ playlistItem['images'][2]['url'] }}" alt="Girl in a jacket">
+        </td>
+        <td>{{ playlistItem['name'] }}</td>
+    </tr>
+    {% endfor %}
+  </form>
+</table>
+{% endblock %}
