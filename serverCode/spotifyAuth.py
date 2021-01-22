@@ -1,7 +1,7 @@
 import requests
 from urllib.parse import urlencode
 import os
-from apiKeys import *
+from apiKeys import spotifyClientID, spotifyClientSecret
 
 clientId = spotifyClientID
 secretKey = spotifyClientSecret
@@ -26,3 +26,8 @@ def getCurrentUser(accessToken):
     headers = {'Authorization': 'Bearer ' + str(accessToken)}
     response = requests.get('https://api.spotify.com/v1/me/playlists', headers = headers)
     return response
+
+def getTracks(accessToken, playlistId):
+    headers = {'Authorization': 'Bearer ' + str(accessToken)}
+    response = requests.get('https://api.spotify.com/v1/playlists/' + playlistId + '/tracks', headers = headers)
+    return response.json()

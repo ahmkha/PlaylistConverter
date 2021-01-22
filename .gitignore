@@ -1,0 +1,4 @@
+.vscode
+serverCode/apiKeys.py
+serverCode/__pycache__
+serverCode/yt_client_tokens.json
