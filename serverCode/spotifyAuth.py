@@ -29,5 +29,15 @@ def getCurrentUser(accessToken):
 
 def getTracks(accessToken, playlistId):
     headers = {'Authorization': 'Bearer ' + str(accessToken)}
+    responses = []
     response = requests.get('https://api.spotify.com/v1/playlists/' + playlistId + '/tracks', headers = headers)
-    return response.json()
+    numTracks = response.json()['total']
+    responses.append(response.json())
+
+    while numTracks > 100:
+        payload = {'offset': len(responses) * 100}
+        currResponse = requests.get('https://api.spotify.com/v1/playlists/' + playlistId + '/tracks', headers = headers, params=payload)
+        responses.append(currResponse.json())
+        numTracks -= currResponse.json()['total']
+
+    return responses

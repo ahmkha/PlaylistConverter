@@ -16,14 +16,16 @@
     <th>Tracks:</th>
   </tr>
   <form action="/YoutubeLogin" method="POST">
-    {% for track in tracks %}
-    <tr>
-        <td><input type="checkbox" name="tracks" value="{{ track['track']['id'] }}" checked/></td>
-        <td>
-            <img src = "{{ track['track']['album']['images'][2]['url'] }}">
-        </td>
-        <td>{{ track['track']['name'] }}</td>
-    </tr>
+    {% for block in playlistInfoArray %}
+      {% for track in block['items'] %}
+      <tr>
+          <td><input type="checkbox" name="tracks" value="{{ track['track']['id'] }}" checked/></td>
+          <td>
+              <img src = "{{ track['track']['album']['images'][2]['url'] }}">
+          </td>
+          <td>{{ track['track']['name'] }}</td>
+      </tr>
+      {% endfor %}
     {% endfor %}
     <input type="submit" value="Submit">
   </form>
